@@ -20,14 +20,16 @@ function setThemeColor(event) {
   setLightTheme();
 }
 function setDarkTheme() {
-  bodyRef.classList.remove('light-theme');
-  bodyRef.classList.add('dark-theme');
+  switchThemes('light-theme', 'dark-theme');
   localStorage.setItem('theme', Theme.DARK);
 }
 function setLightTheme() {
-  bodyRef.classList.remove('dark-theme');
-  bodyRef.classList.add('light-theme');
+  switchThemes('dark-theme', 'light-theme');
   localStorage.setItem('theme', Theme.LIGHT);
+}
+function switchThemes(prevTheme, nextTheme) {
+  bodyRef.classList.remove(prevTheme);
+  bodyRef.classList.add(nextTheme);
 }
 function checkDarkTheme() {
   if (localStorage.getItem('theme') === Theme.DARK) {
